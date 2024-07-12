@@ -14,7 +14,7 @@ import pickle
 import logging
 
 from scipy.stats import gaussian_kde
-from scipy.stats import median_absolute_deviation as mad
+from scipy.stats import median_abs_deviation as mad
 from scipy.signal import argrelextrema
 
 from raccoon.utils.plots import plot_violin
@@ -443,7 +443,7 @@ def one_hot_encode(labs_opt, name, interface, min_pop=None, rename=True):
             labs_opt.index = tmpix
 
     # cuml no sparse yet, bug inherited by cupy
-    ohe = interface.one_hot(sparse=False)
+    ohe = interface.one_hot(sparse_output=False)
     ohe.fit(labs_opt)
 
     tmplab = interface.df.DataFrame(
